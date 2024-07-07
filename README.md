@@ -19,4 +19,4 @@ Point to the folder containing the index.html & assets:
 
 ```sh
 export STATIC=/path/to/folder/
-`
+```
