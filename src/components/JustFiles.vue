@@ -88,6 +88,7 @@ const HOST = import.meta.env.DEV ? "http://localhost:5566" : ''
 import { ref, onMounted } from 'vue';
 import FileEntry from './FileEntry.vue';
 import Modal from './Modal.vue';
+import config from '../site_config.js';
 
 import 'primeicons/primeicons.css';
 
@@ -140,7 +141,12 @@ const action_download_folder = (folder) => {
 
 const action_download_file = (filename) => {
   const path = get_stripped_path(filename);
-  download(`download/${path}`, filename);
+  if (config.direct_download_path) {
+    download(`${config.direct_download_path}${path}`, filename);
+
+  } else {
+    download(`download/${path}`, filename);
+  }
 }
 
 async function makeFolder() {
