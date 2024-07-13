@@ -10,6 +10,7 @@ install:
 
 
 build:
+    poetry install
     rm -fr dist
     npm run build
     poetry build
